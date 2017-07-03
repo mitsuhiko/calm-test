@@ -10,20 +10,20 @@ tool:
         # into the virtualenv
         pep8-naming: 0.4.1
 
-    # when the install step is run, link the .flake8 file from the .calm
-    # folder into the project folder automatically.
-    install:
-      - link: .flake8
+  # when the install step is run, link the .flake8 file from the .calm
+  # folder into the project folder automatically.
+  install:
+    - link: .flake8
 
-    # This configures a linting engine.  The pattern is only necessary for
-    # explicit mentions of files.  So when `calm run foo.py` is run, we
-    # want to only invoke flake8 and not eslint.
-    lint:
-      patterns:
-        - '*.py'
-      run:
-        - cmd: "${CALM_TOOL_PATH}/run-flake8.py"
-          description: Linting with flake8
-          stdout:
-            # This tells calm to parse the standardized calm json output.
-            parse-lint-json: true
+  # This configures a linting engine.  The pattern is only necessary for
+  # explicit mentions of files.  So when `calm run foo.py` is run, we
+  # want to only invoke flake8 and not eslint.
+  lint:
+    patterns:
+      - '*.py'
+    run:
+      - cmd: "${CALM_TOOL_PATH}/run-flake8.py"
+        description: Linting with flake8
+        stdout:
+          # This tells calm to parse the standardized calm json output.
+          parse-lint-json: true
